@@ -1,0 +1,4 @@
+*.bak*
+*~
+.config/waybar/settings/waybar-disabled
+__pycache__/

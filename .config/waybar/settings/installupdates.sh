@@ -1,0 +1,1 @@
+$(cat ~/kitty) --class dotfiles-floating -e ~/.config/j/scripts/installupdates.sh
