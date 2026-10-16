@@ -3,7 +3,7 @@
 # Existing configs are backed up to ~/.config-backup-<date> first.
 set -e
 REPO="$(cd "$(dirname "$0")" && pwd)"
-APPS=(hypr waybar kitty rofi swaync wlogout waypaper nwg-dock-hyprland)
+APPS=(hypr waybar kitty rofi swaync wlogout waypaper)
 BACKUP="$HOME/.config-backup-$(date +%Y%m%d-%H%M%S)"
 
 for a in "${APPS[@]}"; do
