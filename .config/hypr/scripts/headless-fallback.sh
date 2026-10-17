@@ -13,5 +13,5 @@ fi
 if ! hyprctl monitors | grep -q "Monitor HEADLESS"; then
     hyprctl output create headless
     sleep 1
-    hyprctl keyword monitor "HEADLESS-1, 1920x1080@60, 0x0, 1"
+    hyprctl keyword monitor "HEADLESS-1, 1600x900@60, 0x0, 1"
 fi
