@@ -53,7 +53,6 @@
         "bluetooth",
         "battery", 
 "network",
-        "group/hardware",
         "custom/cliphist",
         "custom/hypridle",
         "custom/hyprshade",
