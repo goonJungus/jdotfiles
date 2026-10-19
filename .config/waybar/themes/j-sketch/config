@@ -3,12 +3,12 @@
     // Palette mirrors mdotfiles sketchybar theme/palette.lua, hue-shifted purple -> teal.
     "layer": "top",
     "position": "top",
-    "height": 40,
-    "margin-top": 6,
-    "margin-left": 10,
-    "margin-right": 10,
+    "height": 38,
+    "margin-top": 0,
+    "margin-left": 8,
+    "margin-right": 8,
     "margin-bottom": 0,
-    "spacing": 6,
+    "spacing": 0,
 
     "include": [
         "~/.config/waybar/modules.json"
@@ -110,7 +110,7 @@
     },
 
     "network": {
-        "format-wifi": "<span color='#2dd4bf'>{icon}</span>    {essid}",
+        "format-wifi": "<span color='#2dd4bf'>{icon}</span>  {essid}",
         "format-ethernet": "<span color='#2dd4bf'>{icon}</span>  {ifname}",
         "format-disconnected": "<span color='#4d7d77'>{icon}</span>  off",
         "format-icons": {

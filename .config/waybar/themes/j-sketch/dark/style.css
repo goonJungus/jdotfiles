@@ -47,8 +47,8 @@ tooltip {
 #bluetooth {
     background: @pill;
     border-radius: 15px;
-    padding: 0 12px;
-    margin: 0 3px;
+    padding: 0 10px;
+    margin: 0 2px;
     min-height: 30px;
     color: @text;
 }
@@ -67,15 +67,13 @@ tooltip {
 #custom-arch {
     color: @accent;
     font-size: 16px;
-    padding: 0 8px 0 2px;
-    margin-right: 2px;
-    border-right: 1px solid @overlay;
-    border-radius: 0;
+    padding: 0 3px 0 0;
+    margin: 0;
 }
 
 #workspaces {
     padding: 0;
-    margin: 0;
+    margin: 0 -3px 0 0;
 }
 
 #workspaces button {
@@ -85,7 +83,7 @@ tooltip {
     min-height: 24px;
     border-radius: 999px;
     padding: 0;
-    margin: 3px 1px;
+    margin: 3px 3px;
     box-shadow: none;
     text-shadow: none;
 }
