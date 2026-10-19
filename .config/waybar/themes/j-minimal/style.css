@@ -469,3 +469,7 @@ window#waybar.empty #window {
 #custom-caffeine { font-size: 16px; }
 #custom-caffeine.off { opacity: 0.85; color: #a6adc8; }
 #custom-caffeine.on { opacity: 1; color: #f9e2af; }
+
+#custom-caffeine { font-family: "FiraCode Nerd Font", "Noto Color Emoji"; }
+#custom-caffeine.off { opacity: 0.45; }
+#custom-caffeine.on { opacity: 1; }
