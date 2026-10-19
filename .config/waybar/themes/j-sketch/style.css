@@ -1,0 +1,138 @@
+/* j-sketch dark: SketchyBar clone, purple hue-shifted to teal.
+   Palette from mdotfiles sketchybar theme/palette.lua:
+   purple base #0b0710 / surface #130b18 / accent #bf5af2 / text #f4eef8
+   -> teal   base #071011 / surface #0d1a19 / accent #2dd4bf / text #eef8f6 */
+
+@define-color base #071011;
+@define-color pill rgba(7, 16, 17, 0.88);
+@define-color surface #0d1a19;
+@define-color overlay #162624;
+@define-color text #eef8f6;
+@define-color accent #2dd4bf;
+@define-color accent-dark #052e2b;
+@define-color muted #4d7d77;
+@define-color subtle #70a39b;
+@define-color track #33524d;
+
+* {
+    font-family: "Noto Sans", "FiraCode Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @text;
+}
+
+tooltip {
+    background: @surface;
+    border: 1px solid @overlay;
+    border-radius: 9px;
+    color: @text;
+}
+
+/* ---------- pills (groups + standalone modules) ---------- */
+#spaces, #group-spaces,
+#net, #group-net,
+#vol, #group-vol,
+#batt, #group-batt,
+#clockgrp, #group-clockgrp,
+#custom-frontapp,
+#custom-media,
+#custom-caffeine,
+#bluetooth {
+    background: @pill;
+    border-radius: 15px;
+    padding: 0 12px;
+    margin: 0 3px;
+    min-height: 30px;
+    color: @text;
+}
+
+/* modules inside groups: no pill of their own */
+#spaces *, #group-spaces *,
+#net *, #group-net *,
+#vol *, #group-vol *,
+#batt *, #group-batt *,
+#clockgrp *, #group-clockgrp * {
+    background: transparent;
+    margin: 0;
+}
+
+/* ---------- left: spaces pill ---------- */
+#custom-apple {
+    color: @accent;
+    font-size: 16px;
+    padding: 0 8px 0 2px;
+    margin-right: 2px;
+    border-right: 1px solid @overlay;
+    border-radius: 0;
+}
+
+#workspaces {
+    padding: 0;
+    margin: 0;
+}
+
+#workspaces button {
+    color: @text;
+    background: transparent;
+    min-width: 22px;
+    min-height: 22px;
+    border-radius: 999px;
+    padding: 0;
+    margin: 4px 1px;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button:hover {
+    background: @overlay;
+}
+
+#workspaces button.active {
+    background: @accent;
+    color: @accent-dark;
+    font-weight: 700;
+}
+
+#workspaces button.urgent {
+    background: #f2649e;
+    color: @text;
+}
+
+/* ---------- left: front app + media ---------- */
+#custom-frontapp {
+    font-weight: 700;
+}
+
+#custom-media {
+    color: @accent;
+}
+
+/* ---------- right ---------- */
+#network, #battery, #clock, #custom-volume {
+    padding: 0;
+    margin: 0;
+}
+
+#custom-caffeine {
+    font-family: "FiraCode Nerd Font", "Noto Color Emoji";
+    font-size: 15px;
+}
+
+#custom-caffeine.off {
+    opacity: 0.45;
+}
+
+#custom-caffeine.on {
+    opacity: 1;
+}
+
+#bluetooth {
+    font-size: 14px;
+}

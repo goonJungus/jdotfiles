@@ -1,0 +1,109 @@
+{
+    // j-sketch: SketchyBar clone (Q's Mac bar) with teal in place of purple.
+    // Palette mirrors mdotfiles sketchybar theme/palette.lua, hue-shifted purple -> teal.
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 0,
+    "spacing": 6,
+
+    "include": [
+        "~/.config/waybar/modules.json"
+    ],
+
+    "modules-left": [
+        "group/spaces",
+        "custom/frontapp",
+        "custom/media"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "group/net",
+        "group/vol",
+        "custom/caffeine",
+        "group/clockgrp"
+    ],
+
+    "group/spaces": {
+        "orientation": "horizontal",
+        "modules": ["custom/apple", "hyprland/workspaces"]
+    },
+    "group/net": {
+        "orientation": "horizontal",
+        "modules": ["network"]
+    },
+    "group/vol": {
+        "orientation": "horizontal",
+        "modules": ["custom/volume"]
+    },
+    "group/clockgrp": {
+        "orientation": "horizontal",
+        "modules": ["custom/sketchclock"]
+    },
+
+    "custom/sketchclock": {
+        "exec": "~/.config/waybar/settings/sketch-clock.sh",
+        "interval": 5,
+        "format": "{}",
+        "escape": false,
+        "tooltip": false
+    },
+
+    "custom/apple": {
+        "format": "\uf179",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{}",
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+
+    "custom/frontapp": {
+        "exec": "~/.config/waybar/settings/sketch-frontapp.sh",
+        "interval": 1,
+        "format": "{}",
+        "escape": false,
+        "hide-empty-text": true,
+        "tooltip": false
+    },
+
+    "custom/media": {
+        "exec": "~/.config/waybar/settings/sketch-media.sh",
+        "interval": 2,
+        "format": "{}",
+        "escape": false,
+        "hide-empty-text": true,
+        "tooltip": false,
+        "on-click": "playerctl play-pause"
+    },
+
+    "custom/volume": {
+        "exec": "~/.config/waybar/settings/sketch-volume.sh",
+        "interval": 1,
+        "format": "{}",
+        "escape": false,
+        "tooltip": false,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    },
+
+    "network": {
+        "format-wifi": "<span color='#2dd4bf'>{icon}</span>  {essid}",
+        "format-ethernet": "<span color='#2dd4bf'>{icon}</span>  {ifname}",
+        "format-disconnected": "<span color='#4d7d77'>{icon}</span>  off",
+        "format-icons": {
+            "wifi": ["\uf1eb"],
+            "ethernet": ["\uf0ac"]
+        },
+        "tooltip-format-wifi": "{essid} {signalStrength}%",
+        "on-click": "kitty -e nmtui"
+    },
+
+}
