@@ -24,12 +24,13 @@
         "group/net",
         "group/vol",
         "custom/caffeine",
-        "group/clockgrp"
+        "group/clockgrp",
+        "bluetooth"
     ],
 
     "group/spaces": {
         "orientation": "horizontal",
-        "modules": ["custom/apple", "hyprland/workspaces"]
+        "modules": ["custom/arch", "hyprland/workspaces"]
     },
     "group/net": {
         "orientation": "horizontal",
@@ -44,6 +45,19 @@
         "modules": ["custom/sketchclock"]
     },
 
+    "bluetooth": {
+        "format": "{icon}",
+        "format-connected": "{icon}",
+        "format-icons": {
+            "on": "<span color='#2dd4bf'>\uf293</span>",
+            "off": "<span color='#4d7d77'>\uf293</span>",
+            "disabled": "<span color='#4d7d77'>\uf293</span>",
+            "connected": "<span color='#2dd4bf'>\uf293</span>"
+        },
+        "tooltip-format": "{status}",
+        "on-click": "kitty -e bluetoothctl"
+    },
+
     "custom/sketchclock": {
         "exec": "~/.config/waybar/settings/sketch-clock.sh",
         "interval": 5,
@@ -52,8 +66,8 @@
         "tooltip": false
     },
 
-    "custom/apple": {
-        "format": "\uf179",
+    "custom/arch": {
+        "format": "\uf303",
         "tooltip": false
     },
 
@@ -89,13 +103,14 @@
         "format": "{}",
         "escape": false,
         "tooltip": false,
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click": "~/.config/waybar/settings/sketch-volpopup.py",
+        "on-click-right": "pavucontrol",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
     },
 
     "network": {
-        "format-wifi": "<span color='#2dd4bf'>{icon}</span>  {essid}",
+        "format-wifi": "<span color='#2dd4bf'>{icon}</span>    {essid}",
         "format-ethernet": "<span color='#2dd4bf'>{icon}</span>  {ifname}",
         "format-disconnected": "<span color='#4d7d77'>{icon}</span>  off",
         "format-icons": {

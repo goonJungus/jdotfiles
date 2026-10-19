@@ -64,7 +64,7 @@ tooltip {
 }
 
 /* ---------- left: spaces pill ---------- */
-#custom-apple {
+#custom-arch {
     color: @accent;
     font-size: 16px;
     padding: 0 8px 0 2px;
@@ -81,11 +81,11 @@ tooltip {
 #workspaces button {
     color: @text;
     background: transparent;
-    min-width: 22px;
-    min-height: 22px;
+    min-width: 24px;
+    min-height: 24px;
     border-radius: 999px;
     padding: 0;
-    margin: 4px 1px;
+    margin: 3px 1px;
     box-shadow: none;
     text-shadow: none;
 }
