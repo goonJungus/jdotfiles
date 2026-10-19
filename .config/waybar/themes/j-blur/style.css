@@ -515,3 +515,7 @@ window#waybar.empty #window {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
 }
+
+/* j: caffeine cup */
+#custom-caffeine.on { color: #f9e2af; }
+#custom-caffeine.off { opacity: 0.4; }

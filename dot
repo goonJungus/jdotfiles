@@ -8,14 +8,12 @@ DOTS="$SELF_DIR/dots"
 # Which set is active right now?
 target=$(readlink ~/.config/hypr)
 active=$(basename "$(dirname "$(dirname "$target")")")
-[ "$active" = "dotfiles" ] && active=classic
 
 labels=()
 for d in "$HOME"/*/; do
     d=${d%/}
     [ -d "$d/.config/hypr" ] || continue
     name=$(basename "$d")
-    [ "$name" = "dotfiles" ] && name=classic
     if [ "$name" = "$active" ]; then
         labels+=("$name  (active)")
     else

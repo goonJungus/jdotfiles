@@ -79,7 +79,8 @@
         "battery", 
         "custom/exit",
         "clock",
-"tray",
+"custom/caffeine",
+        "tray",
         "custom/notification",
         "custom/j-menu"
     ]

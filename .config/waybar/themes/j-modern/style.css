@@ -499,3 +499,7 @@ window#waybar.empty #window {
 }
 
 
+
+/* j: caffeine cup */
+#custom-caffeine.on { color: #f9e2af; }
+#custom-caffeine.off { opacity: 0.4; }

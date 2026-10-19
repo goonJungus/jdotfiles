@@ -460,3 +460,6 @@ window#waybar.empty #window {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
+/* j: caffeine cup */
+#custom-caffeine.on { color: #f9e2af; }
+#custom-caffeine.off { opacity: 0.4; }

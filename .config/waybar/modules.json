@@ -417,4 +417,12 @@
     ],
     "scroll-step": 1
   }
+,
+  // Caffeine (j)
+  "custom/caffeine": {
+    "return-type": "json",
+    "exec": "~/.config/waybar/settings/caffeine.sh",
+    "interval": 5,
+    "on-click": "~/.config/waybar/settings/caffeine-toggle.sh"
+  }
 }
