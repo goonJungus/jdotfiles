@@ -20,7 +20,6 @@ alias shutdown='systemctl poweroff'
 # --- dead stock aliases, removed ---
 unalias res1 res2 update-grub setkb Qtile 2>/dev/null
 unalias ascii cleanup ts 2>/dev/null
-unalias ***REMOVED*** ***REMOVED***-calendar ***REMOVED***-diagnosis ***REMOVED***-hyprland ***REMOVED***-hyprland-diagnosis ***REMOVED***-options ***REMOVED***-qtile-diagnosis ***REMOVED***-settings ***REMOVED***-sidebar ***REMOVED***-update 2>/dev/null
 
 # --- bare yay updates everything: pacman + AUR, then flatpaks, then prune ---
 yay() {
