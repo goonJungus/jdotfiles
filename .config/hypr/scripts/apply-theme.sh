@@ -13,4 +13,5 @@ SIG=$(ls $XDG_RUNTIME_DIR/hypr/ 2>/dev/null | head -1)
 [ -n "$SIG" ] && export HYPRLAND_INSTANCE_SIGNATURE=$SIG
 pkill hyprpaper 2>/dev/null; sleep 0.3; (hyprpaper >/dev/null 2>&1 &)
 (waypaper --restore >/dev/null 2>&1 &)
+HYPRLAND_INSTANCE_SIGNATURE=$SIG hyprctl plugin unload "$HOME/xpdots/assets/hyprbars.so" >/dev/null 2>&1
 exit 0
