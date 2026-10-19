@@ -465,3 +465,7 @@ window#waybar.empty #window {
 #custom-caffeine.off { opacity: 0.4; }
 
 #custom-caffeine { font-family: "FiraCode Nerd Font", "JetBrainsMono Nerd Font"; font-size: 15px; }
+
+#custom-caffeine { font-size: 16px; }
+#custom-caffeine.off { opacity: 0.85; color: #a6adc8; }
+#custom-caffeine.on { opacity: 1; color: #f9e2af; }
