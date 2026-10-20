@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ws2-layout: whenever workspace 2 is entered while empty, build Q's layout:
-    'kitty --override background_opacity=1.0 --override background=#000000 --override color0=#000000 --override foreground=#00ff41 --override color2=#00b000 --override color10=#00ff41 --override color7=#d8ffd8 --override color15=#eaffea -e zsh -c "cmatrix -b; exec zsh"',
+    'kitty --override background_opacity=1.0 --override background=#000000 --override color0=#000000 --override foreground=#2dd4bf --override color2=#0f766e --override color10=#2dd4bf --override color7=#ccfbf1 --override color15=#f0fdfa -e zsh -c "cmatrix -b; exec zsh"',
    (Ctrl+C in the matrix window drops to a shell instead of closing it)."""
 import glob, json, os, socket, subprocess, sys, time
 
@@ -8,7 +8,7 @@ RUNTIME = os.environ.get("XDG_RUNTIME_DIR", "/run/user/1000")
 TRIO = [
     "kitty -e btop",
     "kitty --override background_opacity=1.0 -e tfm",
-    'kitty --override background=#000000 --override foreground=#00ff41 --override color2=#00b000 --override color10=#00ff41 --override color7=#d8ffd8 --override color15=#eaffea -e zsh -c "cmatrix -b; exec zsh"',
+    'kitty --override background=#000000 --override foreground=#2dd4bf --override color2=#0f766e --override color10=#2dd4bf --override color7=#ccfbf1 --override color15=#f0fdfa -e zsh -c "cmatrix -b; exec zsh"',
 ]
 last_launch = 0.0
 
