@@ -5,10 +5,8 @@ engine=$(cat "$STATE" 2>/dev/null || echo eww)
 case "$1" in
   eww|waybar) engine=$1; echo "$engine" > "$STATE" ;;
   toggle)
-    # Coming home from the vitreus set: stop pleamar + its scene keeper first.
-pkill -f vitreus-keep 2>/dev/null
-pkill -x pleamar 2>/dev/null
-pkill -x awww-daemon 2>/dev/null
+    # Make sure the wallpaper daemon is alive (it is not a bar, but a set swap
+# is a good moment to heal it if it died).
 pgrep -x hyprpaper > /dev/null || setsid hyprpaper > /dev/null 2>&1 &
 if [ "$engine" = eww ]; then
       # eww 0.5 has no open --toggle: detect the bar surface (46px gtk-layer-shell) via hyprctl layers
@@ -18,10 +16,8 @@ if [ "$engine" = eww ]; then
   restart) ;;
   *) ;;
 esac
-# Coming home from the vitreus set: stop pleamar + its scene keeper first.
-pkill -f vitreus-keep 2>/dev/null
-pkill -x pleamar 2>/dev/null
-pkill -x awww-daemon 2>/dev/null
+# Make sure the wallpaper daemon is alive (it is not a bar, but a set swap
+# is a good moment to heal it if it died).
 pgrep -x hyprpaper > /dev/null || setsid hyprpaper > /dev/null 2>&1 &
 if [ "$engine" = eww ]; then
   pkill waybar 2>/dev/null
