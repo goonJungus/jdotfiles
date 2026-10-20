@@ -33,7 +33,8 @@ button { background: transparent; background-image: none; border: none; box-shad
 .volmeter slider { background-color: #eef8f6; border-radius: 999px; min-width: 12px; min-height: 12px; }
 /* caffeine (Arch extra, styled in the same grammar) */
 .cafficon { font-family: "SpaceMono Nerd Font"; font-weight: 700; font-size: 14px; padding-left: 11px; padding-right: 11px; }
-.cafficon.on { color: #eef8f6; }
+.caffpill.on { background-color: #2dd4bf; }
+.cafficon.on { color: #04211d; }
 .cafficon.off { color: rgba(238, 248, 246, 0.45); }
 /* clock: time SemiBold 16 pads -> 15 left; dot pads 2 + item 3 -> 5; date Regular 13, right 15 */
 .clocktime { font-weight: 600; font-size: 16px; color: #2dd4bf; padding-left: 15px; }

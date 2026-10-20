@@ -47,7 +47,7 @@
            :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")))
 
 (defwidget caffpill []
-  (box :class "pill" :valign "center"
+  (box :class {caffeine == "on" ? "pill caffpill on" : "pill caffpill"} :valign "center"
     (button :class "caffbtn" :onclick "~/.config/waybar/settings/caffeine-toggle.sh &"
       (label :class {caffeine == "on" ? "cafficon on" : "cafficon off"} :text ""))))
 
