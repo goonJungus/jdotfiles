@@ -1,0 +1,3 @@
+theme = "graphite"
+accent = "#2dd4bf"
+terminal = "kitty"

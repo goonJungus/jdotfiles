@@ -57,7 +57,7 @@ CSS = b"""
 window { background: transparent; }
 .card {
     background: rgba(7, 16, 17, 0.96);
-    border-radius: 15px;
+    border-radius: 6px;
     padding: 12px 16px;
 }
 .card label.icon { color: #2dd4bf; font-size: 16px; }
