@@ -11,11 +11,11 @@ def pc(*args):
 
 st = pc("status")
 if st not in ("Playing", "Paused"):
-    print(json.dumps({"text": "listening to the silence...", "playing": False}))
+    print(json.dumps({"text": "", "playing": False, "present": False}))
 else:
     title = pc("metadata", "title")
     artist = pc("metadata", "artist")
     line = (title + "  \u2022  " + artist) if artist else title
     if len(line) > 36:
         line = line[:36]
-    print(json.dumps({"text": line, "playing": st == "Playing"}))
+    print(json.dumps({"text": line, "playing": st == "Playing", "present": True}))

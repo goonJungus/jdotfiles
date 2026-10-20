@@ -4,6 +4,7 @@
 (defpoll media :interval "2s" "~/.config/eww/scripts/media.sh")
 (defpoll volume :interval "1s" "~/.config/eww/scripts/volume.sh")
 (defpoll wifi :interval "3s" "~/.config/eww/scripts/wifi.sh")
+(defpoll wifiscan :interval "10s" "~/.config/eww/scripts/wifilist.py")
 (defpoll clock :interval "5s" "~/.config/eww/scripts/clock.sh")
 (defpoll caffeine :interval "2s" "~/.config/eww/scripts/caffeine.sh")
 (defpoll bt :interval "5s" "~/.config/eww/scripts/bt.sh")
@@ -26,7 +27,7 @@
     (label :class "frontlabel" :text {hypr.frontapp})))
 
 (defwidget mediapill []
-  (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
+  (box :visible {media.present} :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
     (button :class "mediabtn" :onclick "playerctl play-pause"
       (label :class "mediaicon" :text {media.playing ? "󰏤" : "󰐊"}))
     (label :class {media.playing ? "medialabel" : "medialabel muted"} :text {media.text})))
@@ -34,8 +35,10 @@
 (defwidget wifipill []
   (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
        :visible {wifi.ssid != ""}
-    (label :class "wifiicon" :text {wifi.icon})
-    (label :class "wifilabel" :text {wifi.ssid})))
+    (button :class "wifibtn" :onclick "~/.config/eww/scripts/wifitoggle.sh"
+      (box :orientation "h" :space-evenly false :spacing 0 :valign "center"
+        (label :class "wifiicon" :text {wifi.icon})
+        (label :class "wifilabel" :text {wifi.ssid})))))
 
 (defwidget volpill []
   (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
@@ -53,9 +56,11 @@
 
 (defwidget clockpill []
   (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
-    (label :class "clocktime" :text {clock.time})
-    (label :class "clockdot" :text "•")
-    (label :class "clockdate" :text {clock.date})))
+    (button :class "clockbtn" :onclick "~/.config/eww/scripts/caltoggle.sh" :onrightclick "swaync-client -t &"
+      (box :orientation "h" :space-evenly false :spacing 0 :valign "center"
+        (label :class "clocktime" :text {clock.time})
+        (label :class "clockdot" :text "•")
+        (label :class "clockdate" :text {clock.date})))))
 
 (defwidget btpill []
   (box :class "pill" :valign "center"
@@ -97,3 +102,34 @@
   :exclusive false
   :focusable false
   (volpoproot))
+
+(defwidget wifipoproot []
+  (box :class "wifipop" :orientation "v" :space-evenly false :spacing 2
+    (label :class "pophead" :text "Wi-Fi nearby")
+    (box :orientation "v" :space-evenly false :spacing 2
+        (for net in {wifiscan.networks}
+          (button :class {net.active ? "netrow active" : "netrow"}
+                  :onclick "~/.config/eww/scripts/wificonnect.sh '${net.ssid}' ${net.secured ? 1 : 0}"
+            (box :orientation "h" :space-evenly false
+              (label :class "netssid" :hexpand true :halign "start" :text {net.ssid})
+              (label :class "netmeta" :text {net.meta})))))))
+
+(defwindow wifipopup
+  :monitor 0
+  :geometry (geometry :x "330px" :y "46px" :width "300px" :height "380px" :anchor "top right")
+  :stacking "overlay"
+  :exclusive false
+  :focusable false
+  (wifipoproot))
+
+(defwidget calpoproot []
+  (box :class "calpop" :orientation "v" :space-evenly false
+    (calendar :class "cal" :day {clock.day} :month {clock.month} :year {clock.year})))
+
+(defwindow calpopup
+  :monitor 0
+  :geometry (geometry :x "30px" :y "46px" :width "262px" :height "248px" :anchor "top right")
+  :stacking "overlay"
+  :exclusive false
+  :focusable false
+  (calpoproot))
