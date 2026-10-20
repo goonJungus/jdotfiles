@@ -1,3 +1,16 @@
+terminal = "kitty"
+search_url = "https://duckduckgo.com/?q={q}"
+currency = ""
+font = "JetBrainsMono Nerd Font"
+font_size = 11.0
+width = 820
+height = 460
+dim = 0.35
 theme = "graphite"
 accent = "#2dd4bf"
-terminal = "kitty"
+icons = true
+previews = false
+alt_release = false
+start_windows = true
+start_apps = 24
+disabled = []

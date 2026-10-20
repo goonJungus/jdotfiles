@@ -1,9 +1,21 @@
-#!/bin/bash
-# j-sketch eww media: play/pause glyph + title (empty hides the pill)
-st=$(playerctl status 2>/dev/null) || exit 0
-[ "$st" = "Stopped" ] && exit 0
-title=$(playerctl metadata title 2>/dev/null)
-[ -z "$title" ] && exit 0
-if [ "${#title}" -gt 46 ]; then title="${title:0:46}…"; fi
-if [ "$st" = "Playing" ]; then icon="▶"; else icon="❚❚"; fi
-printf '%s  %s' "$icon" "$title"
+#!/usr/bin/env python3
+# j-sketch eww media: SketchyBar media item - "Title  \u2022  Artist", max 36 chars,
+# play/pause glyph state, idle text when nothing is playing.
+import json, subprocess
+
+def pc(*args):
+    try:
+        return subprocess.run(["playerctl", *args], capture_output=True, text=True, timeout=3).stdout.strip()
+    except Exception:
+        return ""
+
+st = pc("status")
+if st not in ("Playing", "Paused"):
+    print(json.dumps({"text": "listening to the silence...", "playing": False}))
+else:
+    title = pc("metadata", "title")
+    artist = pc("metadata", "artist")
+    line = (title + "  \u2022  " + artist) if artist else title
+    if len(line) > 36:
+        line = line[:36]
+    print(json.dumps({"text": line, "playing": st == "Playing"}))

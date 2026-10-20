@@ -1,5 +1,5 @@
 
-;; j-sketch eww bar - SketchyBar clone for jdotfiles
+;; j-sketch eww bar - 1:1 port of Q's SketchyBar config (metrics from the Lua source)
 (deflisten hypr :initial '{"workspaces":[],"frontapp":""}' "~/.config/eww/scripts/hypr.py")
 (defpoll media :interval "2s" "~/.config/eww/scripts/media.sh")
 (defpoll volume :interval "1s" "~/.config/eww/scripts/volume.sh")
@@ -9,48 +9,57 @@
 (defpoll bt :interval "5s" "~/.config/eww/scripts/bt.sh")
 
 (defwidget spaces []
-  (box :class "pill spacespill" :orientation "h" :space-evenly false :spacing 2
+  (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
     (label :class "archlogo" :text "")
-    (for ws in {hypr.workspaces}
-      (button :class {ws.active ? "ws active" : ws.occupied ? "ws occ" : "ws"}
-              :valign "center"
-              :onclick "hyprctl dispatch workspace ${ws.id}"
-              "${ws.id}"))))
+    (box :class "sep" :orientation "v" :space-evenly false)
+    (box :orientation "h" :space-evenly false :spacing 0
+      (for ws in {hypr.workspaces}
+        (button :class {ws.active ? "ws active" : ws.occupied ? "ws occ" : "ws"}
+                :valign "center"
+                :onclick "hyprctl dispatch workspace ${ws.id}"
+                "${ws.id}")))))
 
 (defwidget frontapp []
-  (box :class "pill frontpill" :visible {hypr.frontapp != ""}
-    (label :class "frontapp" :text "›  ${hypr.frontapp}")))
+  (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
+       :visible {hypr.frontapp != ""}
+    (label :class "frontchev" :text "")
+    (label :class "frontlabel" :text {hypr.frontapp})))
 
 (defwidget mediapill []
-  (box :class "pill mediapill" :visible {media != ""}
+  (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
     (button :class "mediabtn" :onclick "playerctl play-pause"
-      (label :text media))))
+      (label :class "mediaicon" :text {media.playing ? "󰏤" : "󰐊"}))
+    (label :class {media.playing ? "medialabel" : "medialabel muted"} :text {media.text})))
 
 (defwidget wifipill []
-  (box :class "pill" :visible {wifi != ""}
-    (label :class "wifilabel" :text "  ${wifi}")))
+  (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
+       :visible {wifi.ssid != ""}
+    (label :class "wifiicon" :text {wifi.icon})
+    (label :class "wifilabel" :text {wifi.ssid})))
 
 (defwidget volpill []
-  (box :class "pill volpill"
+  (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
     (button :class "volbtn"
             :onclick "~/.config/eww/scripts/voltoggle.sh"
             :onrightclick "pavucontrol &"
-      (label :class {volume.muted ? "volicon muted" : "volicon"} :text "${volume.icon}  ${volume.vol}%"))))
-
-(defwidget btpill []
-  (box :class "pill btpill"
-    (label :class {bt == "on" ? "bticon on" : "bticon"} :text "")))
+      (label :class "volicon" :text {volume.icon}))
+    (scale :class "volmeter" :min 0 :max 100 :value {volume.vol}
+           :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")))
 
 (defwidget caffpill []
-  (box :class "pill caffpill"
+  (box :class "pill" :valign "center"
     (button :class "caffbtn" :onclick "~/.config/waybar/settings/caffeine-toggle.sh &"
-      (label :class {caffeine == "on" ? "coffee on" : "coffee off"} :text "☕"))))
+      (label :class {caffeine == "on" ? "cafficon on" : "cafficon off"} :text ""))))
 
 (defwidget clockpill []
-  (box :class "pill clockpill" :orientation "h" :space-evenly false :spacing 0
+  (box :class "pill" :orientation "h" :space-evenly false :spacing 0 :valign "center"
     (label :class "clocktime" :text {clock.time})
-    (label :class "clocksep" :text "   ·   ")
+    (label :class "clockdot" :text "•")
     (label :class "clockdate" :text {clock.date})))
+
+(defwidget btpill []
+  (box :class "pill" :valign "center"
+    (label :class {bt == "on" ? "bticon on" : "bticon"} :text "󰂯")))
 
 (defwidget barroot []
   (box :class "barroot" :orientation "h" :space-evenly false
@@ -61,13 +70,13 @@
     (box :class "side" :orientation "h" :halign "end" :hexpand true :space-evenly false :spacing 4
       (wifipill)
       (volpill)
-      (btpill)
       (caffpill)
-      (clockpill))))
+      (clockpill)
+      (btpill))))
 
 (defwindow bar
   :monitor 0
-  :geometry (geometry :x "0px" :y "0px" :width "100%" :height "46px" :anchor "top center")
+  :geometry (geometry :x "0px" :y "0px" :width "100%" :height "38px" :anchor "top center")
   :stacking "fg"
   :exclusive true
   :focusable false
@@ -75,7 +84,7 @@
 
 (defwidget volpoproot []
   (box :class "volpop" :orientation "h" :space-evenly false :spacing 10
-    (label :class "volicon" :text {volume.icon})
+    (label :class "volicon pop" :text {volume.icon})
     (scale :class "volscale" :min 0 :max 100 :value {volume.vol}
            :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")
     (label :class "volpct" :text "${volume.vol}%")
@@ -83,7 +92,7 @@
 
 (defwindow volpopup
   :monitor 0
-  :geometry (geometry :x "150px" :y "52px" :width "300px" :height "58px" :anchor "top right")
+  :geometry (geometry :x "150px" :y "46px" :width "300px" :height "58px" :anchor "top right")
   :stacking "overlay"
   :exclusive false
   :focusable false
