@@ -1,0 +1,66 @@
+
+/* j-sketch eww - SketchyBar metrics 1:1. Fonts: Gabarito (text), SpaceMono Nerd Font (icons).
+   SketchyBar pad math baked into each class: group pad 4 + item pad 3 + icon/label pads. */
+* { font-family: "Gabarito"; font-size: 13px; font-weight: 600; color: #eef8f6; }
+window { background-color: transparent; }
+button { background: transparent; background-image: none; border: none; box-shadow: none; padding: 0; margin: 0; }
+.barroot { background: transparent; padding: 0 10px; }
+.side { background: transparent; }
+.pill { background-color: #000000; border-radius: 9px; min-height: 30px; }
+/* workspaces group: logo item pads 8/4 + icon pads 3/3 -> 15 left, 7 right */
+.archlogo { font-family: "SpaceMono Nerd Font"; font-weight: 700; font-size: 14px; color: #2dd4bf; padding-left: 15px; padding-right: 7px; }
+.sep { min-width: 1px; min-height: 14px; margin: 8px 4px; background-color: rgba(238, 248, 246, 0.2); }
+/* space slot: item pads 2/2, disc 24x24 r12, digit Gabarito Bold 13 */
+.ws { min-width: 24px; min-height: 24px; border-radius: 12px; margin: 0 2px; padding: 0; font-weight: 700; font-size: 13px; color: #637d78; }
+.ws.occ { color: #eef8f6; }
+.ws.active { background-color: #2dd4bf; color: #eef8f6; }
+/* front_app: icon pads 8/2 (Bold 13), label Bold 14 pads 4/8 -> 15 left, 15 right, 6 gap */
+.frontchev { font-family: "SpaceMono Nerd Font"; font-weight: 700; font-size: 13px; color: #2dd4bf; padding-left: 15px; padding-right: 2px; }
+.frontlabel { font-weight: 700; font-size: 14px; padding-left: 4px; padding-right: 15px; }
+/* media: icon pads 4/2 -> 11 left; label Regular 13, right 11 */
+.mediaicon { font-family: "SpaceMono Nerd Font"; font-weight: 700; font-size: 14px; color: #2dd4bf; padding-left: 11px; padding-right: 2px; }
+.medialabel { font-weight: 400; padding-left: 3px; padding-right: 11px; }
+.medialabel.muted { color: #70a39b; }
+/* wifi: icon pads 4/4 -> 11 left; label Regular 13 pads 3/4 -> right 11 */
+.wifiicon { font-family: "SpaceMono Nerd Font"; font-weight: 700; font-size: 14px; color: #2dd4bf; padding-left: 11px; padding-right: 4px; }
+.wifilabel { font-weight: 400; padding-left: 3px; padding-right: 11px; }
+/* volume meter: icon pads 4/4 -> 11 left; track 50 wide, right inset 8+4=12 */
+.volicon { font-family: "SpaceMono Nerd Font"; font-weight: 700; font-size: 14px; color: #2dd4bf; padding-left: 11px; padding-right: 4px; }
+.volicon.pop { padding-left: 2px; }
+.volmeter { min-width: 50px; margin-right: 12px; }
+.volmeter trough { background-color: rgba(238, 248, 246, 0.2); border-radius: 999px; min-height: 4px; }
+.volmeter highlight { background-color: #eef8f6; border-radius: 999px; min-height: 4px; }
+.volmeter slider { background-color: #eef8f6; border-radius: 999px; min-width: 12px; min-height: 12px; }
+/* caffeine (Arch extra, styled in the same grammar) */
+.cafficon { font-family: "SpaceMono Nerd Font"; font-weight: 700; font-size: 14px; padding-left: 7px; padding-right: 15px; }
+.caffpill.on { background-color: #2dd4bf; }
+.cafficon.on { color: #04211d; }
+.cafficon.off { color: rgba(238, 248, 246, 0.45); }
+/* clock: time SemiBold 16 pads -> 15 left; dot pads 2 + item 3 -> 5; date Regular 13, right 15 */
+.clocktime { font-weight: 600; font-size: 16px; color: #2dd4bf; padding-left: 15px; }
+.clockdot { font-weight: 400; padding-left: 5px; padding-right: 5px; }
+.clockdate { font-weight: 400; padding-right: 15px; }
+/* bluetooth: icon pads 4/8 -> 11 left, 15 right */
+.bticon { font-family: "SpaceMono Nerd Font"; font-weight: 700; font-size: 14px; color: #637d78; padding-left: 11px; padding-right: 15px; }
+.bticon.on { color: #2dd4bf; }
+/* volume popup: SketchyBar popup surface - radius 9, 2px accent border */
+.volpop { background-color: rgba(3, 10, 9, 0.88); border-radius: 9px; border: 2px solid #2dd4bf; padding: 0 14px; min-height: 46px; }
+.volscale { min-width: 150px; }
+.volscale trough { background-color: rgba(238, 248, 246, 0.2); border-radius: 999px; min-height: 4px; }
+.volscale highlight { background-color: #eef8f6; border-radius: 999px; }
+.volscale slider { background-color: #eef8f6; border-radius: 999px; min-width: 14px; min-height: 14px; }
+.volpct { font-weight: 400; min-width: 38px; }
+.popclose { color: #9fb8b3; font-size: 15px; padding: 0 2px; }
+
+.wifibtn, .clockbtn { background: transparent; border: none; box-shadow: none; padding: 0; }
+.wifipop, .calpop { background-color: rgba(3, 10, 9, 0.92); border-radius: 9px; border: 2px solid #2dd4bf; padding: 10px; }
+.pophead { font-family: "Gabarito"; font-weight: 700; font-size: 14px; color: #ccfbf1; padding: 2px 6px 8px 6px; }
+.netrow { background: transparent; border-radius: 6px; padding: 5px 6px; }
+.netrow:hover { background-color: rgba(45, 212, 191, 0.14); }
+.netssid { font-family: "Gabarito"; font-size: 13px; color: #eef8f6; }
+.netrow.active .netssid { color: #2dd4bf; font-weight: 700; }
+.netmeta { font-family: "SpaceMono Nerd Font"; font-size: 12px; color: rgba(238, 248, 246, 0.55); }
+.cal { font-family: "Gabarito"; font-size: 13px; color: #eef8f6; background-color: transparent; }
+calendar:selected { background-color: #2dd4bf; color: #04211d; border-radius: 6px; }
+calendar.header { color: #ccfbf1; }
+calendar:indeterminate { color: rgba(238, 248, 246, 0.4); }
