@@ -2,14 +2,11 @@
 # dots - hot-swap dotfiles sets without logging out.
 # Usage: dots          -> show the active set
 #        dots jdotfiles | dots <folder in ~>
-APPS=(hypr waybar eww eww kitty rofi swaync wlogout waypaper zunder tfm)
+APPS=(hypr waybar eww kitty rofi swaync wlogout waypaper zunder tfm pleamar)
 
 if [ -z "$1" ]; then
     cur=$(readlink ~/.config/hypr)
-    case "$cur" in
-        */jdotfiles/*) echo "active: jdotfiles" ;;
-        *) echo "active: $cur" ;;
-    esac
+    echo "active: $(basename "$(dirname "$(dirname "$cur")")")"
     exit 0
 fi
 
@@ -38,8 +35,14 @@ SIG=$(ls "$XDG_RUNTIME_DIR/hypr/" 2>/dev/null | head -1)
 if [ -n "$SIG" ]; then
     HYPRLAND_INSTANCE_SIGNATURE=$SIG hyprctl reload >/dev/null 2>&1
 fi
-pkill waybar 2>/dev/null
-("$HOME/.config/waybar/launch.sh" >/dev/null 2>&1 &)
+# The active set's bar.sh is the bar authority (eww in jdotfiles, pleamar in vitreus);
+# sets without one fall back to waybar.
+if [ -x "$HOME/.config/hypr/scripts/bar.sh" ]; then
+    ("$HOME/.config/hypr/scripts/bar.sh" restart >/dev/null 2>&1 &)
+else
+    pkill waybar 2>/dev/null
+    ("$HOME/.config/waybar/launch.sh" >/dev/null 2>&1 &)
+fi
 pkill swaync 2>/dev/null
 (swaync >/dev/null 2>&1 &)
 pkill -f 2>/dev/null
