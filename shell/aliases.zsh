@@ -2,8 +2,8 @@
 # Loaded last (via ~/.zshrc_custom -> this file), so these win over any
 # dotfiles set's stock aliases, whichever set is active.
 
-# My editor is geany (the stock set exported nvim, which isn't installed)
-export EDITOR=geany
+# My editor is fresh (switched from geany 2026-10-20)
+export EDITOR=fresh
 
 # --- keepers ---
 alias c='clear'
