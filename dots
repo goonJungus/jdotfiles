@@ -2,7 +2,7 @@
 # dots - hot-swap dotfiles sets without logging out.
 # Usage: dots          -> show the active set
 #        dots jdotfiles | dots <folder in ~>
-APPS=(hypr waybar kitty rofi swaync wlogout waypaper zunder tfm)
+APPS=(hypr waybar eww eww kitty rofi swaync wlogout waypaper zunder tfm)
 
 if [ -z "$1" ]; then
     cur=$(readlink ~/.config/hypr)

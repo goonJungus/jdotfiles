@@ -1,0 +1,31 @@
+
+* { font-family: "Noto Sans", "FiraCode Nerd Font", "Noto Color Emoji"; font-size: 13px; font-weight: 600; color: #eef8f6; }
+window { background-color: transparent; }
+button { background: transparent; background-image: none; border: none; box-shadow: none; padding: 0; margin: 0; }
+.barroot { background: transparent; padding: 4px 10px 0 10px; }
+.side { background: transparent; }
+.pill { background-color: rgba(7, 16, 17, 0.88); border-radius: 9px; padding: 0 10px; min-height: 34px; }
+.archlogo { color: #2dd4bf; font-size: 15px; padding-right: 6px; }
+.ws { min-width: 22px; min-height: 22px; border-radius: 999px; color: #637d78; font-size: 11px; padding: 0; margin: 0 1px; }
+.ws.occ { color: #cfe8e3; }
+.ws.active { background-color: #2dd4bf; color: #04211d; font-weight: 700; }
+.frontapp { color: #eef8f6; }
+.mediabtn label { color: #eef8f6; }
+.wifilabel { color: #eef8f6; }
+.volicon { color: #2dd4bf; font-size: 14px; }
+.volicon.muted { color: #4d7d77; }
+.bticon { color: #4d7d77; font-size: 14px; }
+.bticon.on { color: #2dd4bf; }
+.coffee { font-size: 15px; }
+.coffee.on { color: #ffd479; }
+.coffee.off { color: rgba(238, 248, 246, 0.45); }
+.clocktime { color: #2dd4bf; }
+.clocksep { color: rgba(238, 248, 246, 0.6); }
+.clockdate { color: #eef8f6; }
+.volpop { background-color: rgba(7, 16, 17, 0.94); border-radius: 6px; padding: 0 14px; min-height: 46px; }
+.volscale { min-width: 150px; }
+.volscale trough { background-color: rgba(45, 212, 191, 0.18); border-radius: 999px; min-height: 6px; }
+.volscale highlight { background-color: #2dd4bf; border-radius: 999px; }
+.volscale slider { background-color: #eef8f6; border-radius: 999px; min-width: 14px; min-height: 14px; }
+.volpct { color: #eef8f6; min-width: 38px; }
+.popclose { color: #9fb8b3; font-size: 15px; padding: 0 2px; }
