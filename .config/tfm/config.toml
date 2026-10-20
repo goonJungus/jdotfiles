@@ -1,3 +1,5 @@
+sidebar-title = "none"
+
 # tfm theme: Q's teal (#2dd4bf) on OLED black — matches the j-sketch waybar.
 [theme]
 bg             = "#000000"
