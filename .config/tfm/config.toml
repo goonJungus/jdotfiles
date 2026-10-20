@@ -34,4 +34,4 @@ ansi14         = "#99f6e4"
 ansi15         = "#ffffff"
 
 [ui]
-sidebar-title = "none"
+sidebar-title = "logo"
